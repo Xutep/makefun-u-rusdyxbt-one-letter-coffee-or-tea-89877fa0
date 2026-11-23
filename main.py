@@ -21,6 +21,10 @@ def main() -> None:
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8", newline="") as f:
         f.write(LETTER)
+    # Read-back verification: the entry must stay exactly one letter.
+    with open(OUTPUT_PATH, "r", encoding="utf-8", newline="") as f:
+        written = f.read()
+    assert written == LETTER and len(written) == 1, "entry must be exactly one letter"
 
 
 if __name__ == "__main__":
